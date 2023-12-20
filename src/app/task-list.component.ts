@@ -7,10 +7,15 @@ import { Task } from './Task';
   standalone: true,
   imports: [NgFor],
   template: `
-    <ul class="text-center">
-      <li *ngFor="let task of tasks">
+    <ul class="text-left list-group d-flex justify-content-between">
+      <li class="list-group-item m-1 " *ngFor="let task of tasks">
         <button [class.line-through]="task.done" (click)=toggleDoneStatus(task)>
-        {{task.name}}
+       {{task.id}} {{task.name}}
+          <div class="float-right ml-5 justify-content-end">
+            <button class="btn btn-danger align-end" (click)="deleteTask(task)"> del</button>
+          </div>
+
+          
         </button>
       </li>
     </ul>
@@ -23,5 +28,10 @@ export class TaskListComponent {
   toggleDoneStatus(task: Task){
     task.done = !task.done;
   }
-
+  
+  deleteTask(task: Task){
+    this.tasks = this.tasks.filter(
+      (t) => t.id !== task.id
+    )
+  }
 }
