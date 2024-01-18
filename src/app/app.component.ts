@@ -14,7 +14,7 @@ import { Task } from './Task';
     <h1>ToDo list</h1>
       <div class="text-center container mt-5">
         <div>
-          <input #taskNameInput class="form-control float-left"/>
+          <input name="taskInput" #taskNameInput class="form-control float-left"/>
           <button (click)="addTask(taskNameInput.value)" type="button" class="btn btn-primary text-dark"
           >Add</button>
           <app-task-list [tasks]="tasks"/>
@@ -50,9 +50,6 @@ export class AppComponent {
       id: this.tasks.slice(-1)[0].id+1,
       name,
       done:false
-    });
-
-  // deleteTask(id: Number){
-  // }
-}
+    })
+  }
 };

@@ -23,7 +23,7 @@ import { Task } from './Task';
   styles: ``
 })
 export class TaskListComponent {
-  @Input() tasks: Task[] = [];
+  @Input({required: true}) tasks: Task[] = [];
 
   toggleDoneStatus(task: Task){
     task.done = !task.done;
